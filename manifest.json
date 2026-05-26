@@ -1,0 +1,57 @@
+{
+  "name": "SAFE STUDENT",
+  "short_name": "SafeStudent",
+  "description": "Protegiendo estudiantes mediante tecnología",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "health", "utilities"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "SOS Emergencia",
+      "short_name": "SOS",
+      "description": "Activar SOS de emergencia",
+      "url": "/index.html#sos",
+      "icons": [{ "src": "assets/icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Reportar Bullying",
+      "short_name": "Reportar",
+      "description": "Enviar reporte anónimo",
+      "url": "/index.html#reportes",
+      "icons": [{ "src": "assets/icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ]
+}

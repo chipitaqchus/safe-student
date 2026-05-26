@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="SAFE STUDENT — Protegiendo estudiantes mediante tecnología. SOS, reportes anónimos y recordatorios médicos." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Safe Student" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SAFE STUDENT" />
+  <meta property="og:description" content="Protegiendo estudiantes mediante tecnología." />
+  <meta property="og:type" content="website" />
+
+  <title>SAFE STUDENT — Protegiendo Estudiantes</title>
+
+  <!-- Favicon SVG inline -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18'%3E🛡️%3C/text%3E%3C/svg%3E" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ LOADING SCREEN ═══════════════════════ -->
+  <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+    <div class="loading-logo">🛡️</div>
+    <div class="loading-text">SAFE STUDENT</div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar"></div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem">Cargando aplicación...</p>
+  </div>
+
+  <!-- ═══ FONDOS ═══════════════════════════════ -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-mesh-extra" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ═══ NAVBAR ════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a class="nav-logo" data-section="home" href="#home" aria-label="Ir a inicio">
+        <div class="nav-logo-icon" aria-hidden="true">🛡️</div>
+        <span class="nav-logo-text">SAFE <span>STUDENT</span></span>
+      </a>
+
+      <!-- Links desktop -->
+      <ul class="nav-links" role="list">
+        <li>
+          <a class="nav-link active" data-section="home" href="#home">
+            <span class="nav-link-icon" aria-hidden="true">🏠</span>
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-section="sos" href="#sos" style="color:var(--red-400)">
+            <span class="nav-link-icon" aria-hidden="true">🚨</span>
+            SOS
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-section="reportes" href="#reportes">
+            <span class="nav-link-icon" aria-hidden="true">📋</span>
+            Reportes
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-section="recordatorios" href="#recordatorios">
+            <span class="nav-link-icon" aria-hidden="true">💊</span>
+            Recordatorios
+          </a>
+        </li>
+      </ul>
+
+      <!-- Acciones -->
+      <div class="nav-actions">
+        <button class="btn-dark-toggle" id="darkModeBtn" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">☀️</button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══════════════════════════ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú móvil">
+    <ul role="list">
+      <li><a class="nav-link" data-section="home" href="#home"><span aria-hidden="true">🏠</span> Inicio</a></li>
+      <li><a class="nav-link" data-section="sos" href="#sos" style="color:var(--red-400)"><span aria-hidden="true">🚨</span> SOS Emergencia</a></li>
+      <li><a class="nav-link" data-section="reportes" href="#reportes"><span aria-hidden="true">📋</span> Reportar Bullying</a></li>
+      <li><a class="nav-link" data-section="recordatorios" href="#recordatorios"><span aria-hidden="true">💊</span> Recordatorios</a></li>
+      <li style="margin-top:0.5rem">
+        <button class="nav-link w-full btn-ghost" id="darkModeBtnMobile" style="border:none;background:var(--bg-card);border:1px solid var(--border-glass);">
+          <span aria-hidden="true">🌙</span> Cambiar tema
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ═══ MAIN ══════════════════════════════════ -->
+  <main id="main" role="main">
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 1: HOME
+    ═══════════════════════════════════════════ -->
+    <section class="section active" id="section-home" aria-labelledby="home-title">
+
+      <!-- Hero -->
+      <div class="home-hero">
+        <div class="home-eyebrow">
+          <span class="badge badge-blue">✨ Versión 1.0</span>
+        </div>
+        <h1 class="home-title" id="home-title">
+          Protegiendo estudiantes<br>mediante tecnología.
+        </h1>
+        <p class="home-subtitle">
+          Tu compañero de seguridad escolar. Emergencias, reportes anónimos y recordatorios médicos en un solo lugar.
+        </p>
+        <div class="home-quick-actions">
+          <button class="btn btn-danger btn-lg" data-section="sos">
+            🚨 SOS Emergencia
+          </button>
+          <button class="btn btn-ghost btn-lg" data-section="reportes">
+            📋 Reportar
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="home-stats mb-8">
+        <div class="glass-card stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Módulos</div>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Anónimo</div>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-number">📴</div>
+          <div class="stat-label">Offline</div>
+        </div>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="feature-grid">
+
+        <!-- SOS Card -->
+        <div class="glass-card feature-card sos" data-section="sos" role="button" tabindex="0" aria-label="Ir a SOS emergencia">
+          <div class="feature-icon-wrap" aria-hidden="true">🚨</div>
+          <h2 class="feature-title">SOS Emergencia</h2>
+          <p class="feature-desc">
+            Activa una alerta de emergencia con tu ubicación GPS exacta. Envía tu posición por WhatsApp o correo con un solo toque.
+          </p>
+          <div class="feature-arrow">
+            Activar SOS <span>→</span>
+          </div>
+        </div>
+
+        <!-- Reportes Card -->
+        <div class="glass-card feature-card reportes" data-section="reportes" role="button" tabindex="0" aria-label="Ir a reportes anónimos">
+          <div class="feature-icon-wrap" aria-hidden="true">🔒</div>
+          <h2 class="feature-title">Reportes Anónimos</h2>
+          <p class="feature-desc">
+            Denuncia situaciones de bullying, violencia o acoso de forma completamente anónima. Tu seguridad e identidad están protegidas.
+          </p>
+          <div class="feature-arrow">
+            Reportar ahora <span>→</span>
+          </div>
+        </div>
+
+        <!-- Recordatorios Card -->
+        <div class="glass-card feature-card recordatorios" data-section="recordatorios" role="button" tabindex="0" aria-label="Ir a recordatorios médicos">
+          <div class="feature-icon-wrap" aria-hidden="true">💊</div>
+          <h2 class="feature-title">Recordatorios Médicos</h2>
+          <p class="feature-desc">
+            Registra tus medicamentos y horarios. Recibe alertas y notificaciones para nunca olvidar una dosis importante.
+          </p>
+          <div class="feature-arrow">
+            Gestionar medicamentos <span>→</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info footer -->
+      <div class="glass-card" style="padding:1.5rem 2rem;margin-bottom:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <span style="font-size:1.5rem">🔐</span>
+          <div>
+            <p style="font-weight:600;font-size:0.9rem;margin-bottom:0.25rem;">Tu privacidad es nuestra prioridad</p>
+            <p style="font-size:0.8rem;color:var(--text-muted);">Toda la información se guarda únicamente en tu dispositivo. No enviamos datos a servidores externos.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 2: SOS
+    ═══════════════════════════════════════════ -->
+    <section class="section" id="section-sos" aria-labelledby="sos-title">
+
+      <div class="sos-header">
+        <span class="badge badge-red mb-3">🚨 Emergencias</span>
+        <h2 class="section-title red" id="sos-title">Sistema SOS</h2>
+        <p class="section-desc">Presiona el botón para activar la alerta y obtener tu ubicación</p>
+      </div>
+
+      <!-- Botón SOS gigante -->
+      <div class="sos-btn-container">
+        <div class="sos-btn-outer" aria-label="Activar SOS de emergencia">
+          <div class="sos-ring sos-ring-1" aria-hidden="true"></div>
+          <div class="sos-ring sos-ring-2" aria-hidden="true"></div>
+          <div class="sos-ring sos-ring-3" aria-hidden="true"></div>
+          <button class="sos-btn" id="sosMainBtn" aria-label="ACTIVAR SOS" role="button">
+            <span class="sos-btn-text">SOS</span>
+            <span class="sos-btn-sub">Presiona aquí</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="max-width:600px;margin:0 auto;">
+
+        <!-- Estado de ubicación -->
+        <div class="location-status pending" id="locationStatus">
+          <div class="status-dot" aria-hidden="true"></div>
+          <span class="status-text">Presiona SOS o el botón de ubicación para comenzar.</span>
+        </div>
+
+        <!-- Mapa -->
+        <div class="map-container" id="mapContainer" aria-label="Mapa de ubicación">
+          <div style="text-align:center;padding:1rem;">
+            <span style="font-size:2rem;display:block;margin-bottom:0.5rem;">🗺️</span>
+            <span>El mapa aparecerá aquí cuando se obtenga la ubicación.</span>
+          </div>
+        </div>
+
+        <!-- Coordenadas -->
+        <div class="coords-grid mb-5">
+          <div class="coord-item">
+            <div class="coord-label">Latitud</div>
+            <div class="coord-value" id="coordLat">— —</div>
+          </div>
+          <div class="coord-item">
+            <div class="coord-label">Longitud</div>
+            <div class="coord-value" id="coordLng">— —</div>
+          </div>
+          <div class="coord-item">
+            <div class="coord-label">Precisión</div>
+            <div class="coord-value" id="coordAcc">— —</div>
+          </div>
+          <div class="coord-item">
+            <div class="coord-label">Estado</div>
+            <div class="coord-value" style="color:var(--text-muted);font-size:0.75rem;font-family:var(--font-body)">GPS listo</div>
+          </div>
+        </div>
+
+        <!-- Campos de contacto -->
+        <div class="glass-card" style="padding:1.5rem;margin-bottom:1.25rem;">
+          <h3 style="font-weight:600;font-size:0.9rem;margin-bottom:1rem;color:var(--text-secondary);">📬 Contactos de emergencia (opcional)</h3>
+          <div class="form-group mb-3">
+            <label class="form-label" for="sosPhone">📱 Número de WhatsApp</label>
+            <input class="form-input" id="sosPhone" type="tel" placeholder="Ej: 51987654321 (con código de país)" />
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="sosEmail">✉️ Correo electrónico</label>
+            <input class="form-input" id="sosEmail" type="email" placeholder="emergencia@ejemplo.com" />
+          </div>
+        </div>
+
+        <!-- Acciones SOS -->
+        <div style="margin-bottom:1rem;">
+          <button class="btn btn-primary btn-lg w-full mb-3" id="sosGetLocation" style="justify-content:center;">
+            📍 Obtener mi ubicación
+          </button>
+        </div>
+        <div class="sos-actions">
+          <button class="btn btn-success" id="sosBtnWhatsapp" disabled style="justify-content:center;">
+            💬 Enviar por WhatsApp
+          </button>
+          <button class="btn btn-primary" id="sosBtnEmail" disabled style="justify-content:center;">
+            ✉️ Enviar por Email
+          </button>
+          <button class="btn btn-ghost" id="sosBtnCopy" disabled style="justify-content:center;grid-column:1/-1;">
+            📋 Copiar mensaje de emergencia
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 3: REPORTES ANÓNIMOS
+    ═══════════════════════════════════════════ -->
+    <section class="section" id="section-reportes" aria-labelledby="reportes-title">
+
+      <div class="reportes-header">
+        <span class="badge badge-orange mb-3">🔒 Anónimo</span>
+        <h2 class="section-title orange" id="reportes-title">Reportes Anónimos</h2>
+        <p class="section-desc">Reporta situaciones de acoso sin revelar tu identidad</p>
+      </div>
+
+      <!-- Formulario -->
+      <div class="glass-card report-form-card mb-6">
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;">
+          📝 Nuevo Reporte
+        </h3>
+
+        <!-- Tipo de problema -->
+        <div class="form-group">
+          <label class="form-label">Tipo de situación <span style="color:var(--red-400)">*</span></label>
+          <div class="type-grid">
+            <button class="type-btn" data-type="bullying">
+              <span class="type-btn-icon">😔</span>
+              <span>Bullying</span>
+            </button>
+            <button class="type-btn" data-type="violencia">
+              <span class="type-btn-icon">⚠️</span>
+              <span>Violencia</span>
+            </button>
+            <button class="type-btn" data-type="acoso">
+              <span class="type-btn-icon">🚫</span>
+              <span>Acoso</span>
+            </button>
+            <button class="type-btn" data-type="amenazas">
+              <span class="type-btn-icon">❗</span>
+              <span>Amenazas</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Nombre (opcional) -->
+        <div class="form-group">
+          <label class="form-label" for="reportName">Tu nombre (opcional)</label>
+          <input
+            class="form-input"
+            id="reportName"
+            type="text"
+            placeholder="Déjalo vacío para ser completamente anónimo"
+            maxlength="60"
+          />
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group">
+          <label class="form-label" for="reportDesc">Descripción <span style="color:var(--red-400)">*</span></label>
+          <textarea
+            class="form-textarea"
+            id="reportDesc"
+            placeholder="Describe lo que ocurrió con el mayor detalle posible. Tu reporte es completamente confidencial..."
+            maxlength="500"
+          ></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="form-error" id="descError">La descripción es obligatoria.</span>
+            <span class="char-count" id="charCount" style="margin-left:auto">0 / 500</span>
+          </div>
+        </div>
+
+        <!-- Botón enviar -->
+        <button class="btn btn-warning btn-lg w-full" id="submitReportBtn" style="justify-content:center;">
+          🔒 Enviar Reporte Anónimo
+        </button>
+
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:0.75rem;">
+          🔐 Tu identidad está protegida. Los reportes se guardan sólo en tu dispositivo.
+        </p>
+      </div>
+
+      <!-- Historial -->
+      <div>
+        <div class="reports-list-header">
+          <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;">
+            📋 Historial de reportes
+          </h3>
+          <button class="btn btn-ghost btn-sm" id="clearReportsBtn">
+            🗑️ Limpiar todo
+          </button>
+        </div>
+        <div id="reportsList" role="list"></div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 4: RECORDATORIOS MÉDICOS
+    ═══════════════════════════════════════════ -->
+    <section class="section" id="section-recordatorios" aria-labelledby="recordatorios-title">
+
+      <div class="recordatorios-header">
+        <span class="badge badge-green mb-3">💊 Salud</span>
+        <h2 class="section-title green" id="recordatorios-title">Recordatorios Médicos</h2>
+        <p class="section-desc">Gestiona tus medicamentos y horarios de dosis</p>
+      </div>
+
+      <!-- Banner de notificaciones -->
+      <div class="glass-card mb-5" id="notifBanner" style="padding:1rem 1.5rem;border-color:var(--border-green);background:rgba(34,197,94,0.06);">
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <span style="font-size:1.5rem">🔔</span>
+          <div style="flex:1;">
+            <p style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Activa notificaciones</p>
+            <p style="font-size:0.775rem;color:var(--text-muted);">Recibe alertas automáticas cuando sea hora de tomar tu medicamento.</p>
+          </div>
+          <button class="btn btn-success btn-sm" id="requestNotifBtn">Activar</button>
+        </div>
+      </div>
+
+      <!-- Botón agregar -->
+      <div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem;">
+        <button class="btn btn-success" id="addMedBtn">
+          ➕ Agregar medicamento
+        </button>
+      </div>
+
+      <!-- Grid de medicamentos -->
+      <div class="meds-grid" id="medsGrid" role="list"></div>
+
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ═══ MODAL: RECORDATORIO ══════════════════ -->
+  <div class="modal-overlay" id="medModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar modal">✕</button>
+      <h2 class="modal-title" id="modalTitle">➕ Nuevo Recordatorio</h2>
+      <form id="medForm" novalidate onsubmit="return false;">
+
+        <!-- Ícono del medicamento -->
+        <div class="form-group">
+          <label class="form-label" for="medIcon">Ícono del medicamento</label>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem;" id="iconPicker">
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="💊" onclick="document.getElementById('medIcon').value='💊';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">💊</button>
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="💉" onclick="document.getElementById('medIcon').value='💉';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">💉</button>
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="🩺" onclick="document.getElementById('medIcon').value='🩺';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">🩺</button>
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="🧴" onclick="document.getElementById('medIcon').value='🧴';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">🧴</button>
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="🩹" onclick="document.getElementById('medIcon').value='🩹';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">🩹</button>
+            <button type="button" class="btn btn-ghost" style="font-size:1.4rem;padding:0.4rem 0.6rem;" data-emoji="🫁" onclick="document.getElementById('medIcon').value='🫁';document.querySelectorAll('#iconPicker button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">🫁</button>
+          </div>
+          <input type="hidden" id="medIcon" value="💊" />
+        </div>
+
+        <!-- Nombre del medicamento -->
+        <div class="form-group">
+          <label class="form-label" for="medName">Nombre del medicamento <span style="color:var(--red-400)">*</span></label>
+          <input class="form-input" id="medName" type="text" placeholder="Ej: Paracetamol 500mg" maxlength="80" />
+          <span class="form-error" id="medNameError">El nombre es obligatorio.</span>
+        </div>
+
+        <!-- Hora -->
+        <div class="form-group">
+          <label class="form-label" for="medTime">Hora de dosis <span style="color:var(--red-400)">*</span></label>
+          <div class="time-input-wrap">
+            <input class="form-input" id="medTime" type="time" />
+            <span class="time-badge" aria-hidden="true">⏰</span>
+          </div>
+          <span class="form-error" id="medTimeError">La hora es obligatoria.</span>
+        </div>
+
+        <!-- Descripción / instrucciones -->
+        <div class="form-group">
+          <label class="form-label" for="medDesc">Instrucciones (opcional)</label>
+          <textarea
+            class="form-textarea"
+            id="medDesc"
+            placeholder="Ej: Tomar con comida. 1 pastilla. Repetir cada 8 horas."
+            maxlength="200"
+            style="min-height:80px"
+          ></textarea>
+        </div>
+
+        <button type="button" class="btn btn-success btn-lg w-full" id="saveMedBtn" style="justify-content:center;">
+          💾 Guardar recordatorio
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ TOASTS ════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer" role="region" aria-label="Notificaciones" aria-live="polite"></div>
+
+  <!-- ═══ INSTALL BANNER ═══════════════════════ -->
+  <div class="install-banner" id="installBanner" role="complementary" aria-label="Instalar aplicación">
+    <div class="install-banner-icon" aria-hidden="true">📲</div>
+    <div class="install-banner-text">
+      <div class="install-banner-title">Instalar Safe Student</div>
+      <div class="install-banner-desc">Accede más rápido desde tu pantalla de inicio.</div>
+      <div class="install-banner-btns">
+        <button class="btn btn-primary btn-sm" id="installBtn">Instalar</button>
+        <button class="btn btn-ghost btn-sm" id="installDismiss">Ahora no</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SCRIPT ════════════════════════════════ -->
+  <script src="script.js"></script>
+
+</body>
+</html>
